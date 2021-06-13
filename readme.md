@@ -1,1 +1,1 @@
-An example on how could registration/login process work in express application
+Strona do logowania/rejestrowania z pliku użytkowników
