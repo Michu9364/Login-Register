@@ -1,9 +1,12 @@
+require('dotenv').config({ path: '.env'});
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const db = require('db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,7 +17,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(session({
-  secret: "dasfjoisadiodsafji"
+  secret: process.env.DB_SECRET
 }));
 app.use(logger('dev'));
 app.use(express.json());

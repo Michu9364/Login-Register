@@ -3,15 +3,15 @@ var router = express.Router();
 
 const fs = require('fs');
 const crypto = require('crypto');
+const operator = true;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  let username = req.session.user || req.session.user.username;
-  res.render('index', { title: 'Express', username });
+  res.render('index', { title: 'Wybierz poniższą czynność:'});
 });
 
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Express' });
+  res.render('register', { title: 'Wybierz poniższą czynność:' });
 });
 
 router.post('/register', function(req, res, next) {
@@ -31,13 +31,13 @@ router.post('/register', function(req, res, next) {
 
   const password = crypto.createHash('sha256').update(req.body.password).digest('hex');
 
-  users.push({username, password});
+  users.push({username, password, operator});
   fs.writeFileSync('users.json', JSON.stringify(users));
   res.send('Zarejestrowany!')
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+  res.render('login', { title: 'Logowanie' });
 });
 
 router.get('/logout', function(req, res, next) {
@@ -45,7 +45,6 @@ router.get('/logout', function(req, res, next) {
   res.status(301);
   res.redirect('/')
 });
-
 
 router.post('/login', function(req, res, next) {
   const users = JSON.parse(fs.readFileSync('users.json').toString());
@@ -64,7 +63,9 @@ router.post('/login', function(req, res, next) {
 
   req.session.user = {
     username,
+    operator,
   }
+
   res.status(301);
   res.redirect('/users/myaccount')
 });

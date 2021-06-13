@@ -1,17 +1,19 @@
 <form action="/register" method="post">
-	<div class="container">
+	<div class="register">
 		<div>
 			<label for="login"><b>Login</b></label>
 			<input type="text" placeholder="Login" name="login" required>
 		</div>
 		<div>
-			<label for="password"><b>Password</b></label>
+			<label for="password"><b>Hasło</b></label>
 			<input type="password" placeholder="Password" name="password" required>
 		</div>
 		<div>
-			<label for="passwordRepeat"><b>Password Repeat</b></label>
+			<label for="passwordRepeat"><b>Hasło</b></label>
 			<input type="password" placeholder="Password" name="passwordRepeat" required>
-		</div>
-		<div><button type="submit">Login</button></div>
+		</div></br>
+		<div><button type="submit">Zarejestruj</button></div></br>
 	</div>
+	<b>Masz już konto?</b></br>
+	<a href="/login">Zaloguj się!</a></br>
 </form>

@@ -13,7 +13,8 @@ router.get('/myaccount', function(req, res, next) {
     return ;
   }
   const username = req.session.user.username;
-  res.render('myaccount', { username });
+  const operator = req.session.user.operator;
+  res.render('myaccount', { username, operator });
 });
 
 module.exports = router;

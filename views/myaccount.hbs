@@ -1,3 +1,17 @@
 <h1>Moje konto</h1>
-<p>Witaj, {{username}}</p>
+<p>Witaj, {{username}}!</p>
+
+{{#if operator}}
+<form action="/myaccount" method="post">
+	<div class="myaccount">
+		<div>
+			<label for="Operator"><b>Podaj nazwę konta, aby nadać uprawnienia operatora:</br></b></label></br>
+			<input type="text" placeholder="Login" name="Operator">
+		</div></br>
+		<div><button type="submit">Ustaw</button></div></br>
+	</div>
+</form>
+{{/if}}
+
+<a href="/logout">Wyloguj się!</a></br>
 

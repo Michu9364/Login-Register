@@ -1,15 +1,4 @@
 <h4>{{title}}</h4>
 
-{{#unless username}}
 <a href="/login">Zaloguj się</a></br>
 <a href="/register">Zarejestruj się</a></br>
-{{/unless}}
-{{#if username}}
-<a href="/users/myaccount">Moje konto</a></br>
-<a href="/logout">Wyloguj się</a></br>
-{{/if}}
-<p>Witamy na stronie głównej, {{#if username}}{{username}}{{else}}Nieznajomy{{/if}}</p>
-<p>jakaś treść strony</p>
-{{#if username}}
-<p>jakaś inna treść strony ukryta dla niezalogowanych</p>
-{{/if}}
