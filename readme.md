@@ -1,1 +1,3 @@
-Strona do logowania/rejestrowania z pliku użytkowników
+WAŻNE!
+
+Szkolny projekt do logowania/rejestrowania z pliku użytkowników.
