@@ -7,11 +7,11 @@ const operator = true;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Wybierz poniższą czynność:'});
+  res.render('index', { title: 'Home'});
 });
 
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Wybierz poniższą czynność:' });
+  res.render('register', { title: 'Rejestracja' });
 });
 
 router.post('/register', function(req, res, next) {
@@ -29,11 +29,18 @@ router.post('/register', function(req, res, next) {
     return;
   }
 
+  if (req.body.password.length < 5) {
+		res.status(432);
+    res.send('Za któtkie hasło! Powinno być minimum 6 znaków');
+    return;
+	}
+
   const password = crypto.createHash('sha256').update(req.body.password).digest('hex');
 
   users.push({username, password, operator});
   fs.writeFileSync('users.json', JSON.stringify(users));
   res.send('Zarejestrowany!')
+  res.render('error');
 });
 
 router.get('/login', function(req, res, next) {
